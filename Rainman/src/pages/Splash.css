@@ -1,0 +1,74 @@
+body {
+    background-color: #222;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+  
+  ion-content {
+    --background: transparent;
+  }
+  
+  #count {
+    font-size: 48px;
+    color: #ffffff;
+    margin: 0;
+    margin-bottom: 5px;
+    text-align: center;
+  }
+  
+  p {
+    color: #ffffff;
+    margin: 0;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  #recommendedMove {
+    font-size: 24px;
+    color: #ffffff;
+    text-decoration: underline;
+    margin: 0;
+    margin-bottom: 5px;
+    text-align: center;
+  }
+  
+  .card-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .card-buttons ion-button {
+    font-size: 35px;
+    margin: 5px;
+    padding: 5px;
+    width: 120px;
+    height: 100px;
+  }
+  
+  .action-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: auto;
+    margin-bottom: 0px;
+  }
+  
+  .action-buttons ion-button {
+    font-size: 18px;
+    padding: 10px;
+    margin: 5px 0;
+    width: 100%;
+    max-width: auto;
+    height: 50px;
+  }
+  
