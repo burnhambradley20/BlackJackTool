@@ -38,6 +38,42 @@ body {
     margin-bottom: 5px;
     text-align: center;
   }
+
+  .card-button {
+    width: 60px;
+    height: 80px;
+    padding: 4px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .card-value {
+    font-size: 40px;
+  }
+  
+  .card-suit {
+    font-size: 20px;
+  }
+  
+  .top-left {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+  }
+  
+  .bottom-right {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    transform: rotate(180deg);
+  }
+  
   
   .card-buttons {
     display: flex;
@@ -53,6 +89,11 @@ body {
     padding: 5px;
     width: 120px;
     height: 100px;
+  }
+
+  .card-button-disabled {
+    background-color: #ff0000;
+    cursor: not-allowed;
   }
   
   .action-buttons {
@@ -70,5 +111,7 @@ body {
     width: 100%;
     max-width: auto;
     height: 50px;
+    margin-top: 70px;
+    margin-bottom: -70px;
   }
   

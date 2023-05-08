@@ -1,0 +1,28 @@
+.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .recharts-cartesian-axis-tick-value {
+    font-size: 20px;
+  }
+  
+  .recharts-cartesian-axis-tick-line {
+    display: none;
+  }
+  
+  .recharts-cartesian-grid-horizontal line {
+    stroke: #ffffff;
+    stroke-dasharray: 2px 2px;
+  }
+  
+  .recharts-legend-item-text {
+    font-size: 20px;
+  }
+  
+  .recharts-tooltip-label {
+    font-size: 20px;
+  }
+  
