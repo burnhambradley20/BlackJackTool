@@ -19,7 +19,7 @@ const Splash: React.FC = () => {
   const [decks, setDecks] = useState(1);
   const numCardsInPlay = 52 * decks;
   const [recommendedMove, setRecommendedMove] = useState('');
-  const [previousCard, setPreviousCard] = useState<CardKey | null>(null);
+  const [previousCards, setPreviousCards] = useState<CardKey[]>([]);
   const [showGraph, setShowGraph] = useState(false);
 
   const [cardCount, setCardCount] = useState({
@@ -44,28 +44,31 @@ const Splash: React.FC = () => {
 
   // Hi-Lo card values
   const hiLo: CardValues = {
-    '2': 1,
-    '3': 1,
-    '4': 1,
-    '5': 1,
-    '6': 1,
-    '7': 0,
-    '8': 0,
-    '9': 0,
-    '10': -1,
-    'J': -1,
-    'Q': -1,
-    'K': -1,
-    'A': -1,
+    '2': 0.58,
+    '3': 0.68,
+    '4': 0.72,
+    '5': 0.97,
+    '6': 1.43,
+    '7': 0.35,
+    '8': 0.00,
+    '9': -0.60,
+    '10': -1.00,
+    'J': -1.00,
+    'Q': -1.00,
+    'K': -1.00,
+    'A': -0.58,
   };
 
   // Update the count based on the played card
   const updateCount = (card: CardKey) => {
     if (card in hiLo && cardCount[card] < decks * 4) {
-      setPreviousCard(card);
+      setPreviousCards([...previousCards, card]);
       setCardCount({ ...cardCount, [card]: cardCount[card] + 1 });
       setCards(cards + 1);
-      setCount(count + hiLo[card]);
+
+      // Update the count with two decimal places
+      setCount(parseFloat((count + hiLo[card]).toFixed(2)));
+
       setRecommendedMove(getRecommendedMove(count + hiLo[card], numCardsInPlay - cards - 1));
     }
   };
@@ -75,6 +78,7 @@ const Splash: React.FC = () => {
     setCount(0);
     setCards(0);
     setRecommendedMove('');
+    setPreviousCards([]);
     setCardCount({
       '2': 0,
       '3': 0,
@@ -125,32 +129,31 @@ const Splash: React.FC = () => {
   // Get the recommended move based on the count and remaining cards
   const getRecommendedMove = (count: number, remainingCards: number) => {
     const trueCount = count / (remainingCards / 52);
-    if (count >= 4) {
+
+    if (trueCount >= 1) {
       return 'STAY';
-    } else if (count <= 0) {
-      return 'HIT';
     } else {
-      if (trueCount >= 1) {
-        return 'STAY';
-      } else {
-        return 'HIT';
-      }
+      return 'HIT';
     }
   };
 
+  // Undo the last card played
   const undo = () => {
-    if (previousCard) {
-      setCardCount({ ...cardCount, [previousCard]: cardCount[previousCard] - 1 });
-      setCards(cards - 1);
-      setCount(count - hiLo[previousCard]);
-      setRecommendedMove(getRecommendedMove(count - hiLo[previousCard], numCardsInPlay - cards + 1));
-      setPreviousCard(null);
+    if (previousCards.length > 0) {
+      const lastCard = previousCards.pop();
+      if (lastCard) {
+        setCardCount({ ...cardCount, [lastCard]: cardCount[lastCard] - 1 });
+        setCards(cards - 1);
+
+        // Update the count with two decimal places
+        setCount(parseFloat((count - hiLo[lastCard]).toFixed(2)));
+
+        setRecommendedMove(getRecommendedMove(count - hiLo[lastCard], numCardsInPlay - cards + 1));
+      }
+      setPreviousCards([...previousCards]);
     }
   };
-  const close = () => {
-    setShowGraph(false);
-  };
-  
+
   return (
     <div className="container" id="data">
       <IonPage>
@@ -160,7 +163,7 @@ const Splash: React.FC = () => {
               Undo
             </IonButton>
             <IonTitle>
-              {previousCard ? `Last Card: ${previousCard}` : 'Last: -'}
+              {previousCards.length > 0 ? `Last Card: ${previousCards[previousCards.length - 1]}` : 'Last: -'}
             </IonTitle>
             <IonButton slot="end" onClick={() => setShowGraph(true)}>
               Graph
@@ -168,7 +171,7 @@ const Splash: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <IonContent onClick={() => setShowGraph(false)}>
-          <h1 id="count">{count}</h1>
+          <h1 id="count">{count.toFixed(2)}</h1>
           <p>CARD COUNT</p>
           <h1 id="recommendedMove">{recommendedMove}</h1>
           <p>Selected Amount of Decks: {decks}</p>

@@ -1,28 +1,44 @@
 .chart-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-  }
-  
-  .recharts-cartesian-axis-tick-value {
-    font-size: 20px;
-  }
-  
-  .recharts-cartesian-axis-tick-line {
-    display: none;
-  }
-  
-  .recharts-cartesian-grid-horizontal line {
-    stroke: #ffffff;
-    stroke-dasharray: 2px 2px;
-  }
-  
-  .recharts-legend-item-text {
-    font-size: 20px;
-  }
-  
-  .recharts-tooltip-label {
-    font-size: 20px;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjusts to the height of the screen */
+  background: #333; 
+  border-radius: 2vw; /* Relative to viewport width */
+}
+
+.recharts-cartesian-axis-tick-value {
+  font-size: 5vw; /* Uniform font size */
+  color: #ffffff;
+  text-align: center; /* Center text */
+}
+
+.recharts-cartesian-axis-tick-line {
+  display: none;
+}
+
+.recharts-cartesian-grid-horizontal line {
+  stroke: #ffffff;
+  stroke-dasharray: 2px 2px;
+}
+
+.recharts-legend-item-text {
+  font-size: 5vw; /* Uniform font size */
+  color: #ffffff;
+  font-weight: 500;
+  display: flex; /* Align items in the center */
+  justify-content: center;
+  align-items: center;
+}
+
+.recharts-tooltip-label {
+  font-size: 5vw; /* Uniform font size */
+  color: #ffffff;
+  background: #444;
+  padding: 1vw; /* Relative to viewport width */
+  border-radius: 1vw; /* Relative to viewport width */
+  text-align: center; /* Center text */
+  display: flex; /* Align items in the center */
+  justify-content: center;
+  align-items: center;
+}

@@ -1,117 +1,163 @@
 body {
-    background-color: #222;
-  }
-  
-  .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-  }
-  
-  ion-content {
-    --background: transparent;
-  }
-  
-  #count {
-    font-size: 48px;
-    color: #ffffff;
-    margin: 0;
-    margin-bottom: 5px;
-    text-align: center;
-  }
-  
-  p {
-    color: #ffffff;
-    margin: 0;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  #recommendedMove {
+  background-color: #222;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+ion-content {
+  --background: transparent;
+}
+
+#count {
+  font-size: 13vw;
+  color: #ffffff;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+p {
+  color: #ffffff;
+  margin: 0;
+  margin-bottom: 2vw;
+  text-align: center;
+}
+
+#recommendedMove {
+  font-size: 7vw;
+  color: #ffffff;
+  text-decoration: underline;
+  margin: 0;
+  margin-bottom: 0.5vw;
+  text-align: center;
+}
+
+.card-button {
+  width: 12vw;
+  height: 16vw;
+  padding: 1vw;
+  background-color: rgb(255, 255, 255);
+  border-radius: 2vw;
+  box-shadow: 0 1vw 1.5vw rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.card-value {
+  font-size: 10vw;
+}
+
+.card-suit {
+  font-size: 7vw;
+}
+
+.top-left {
+  position: absolute;
+  top: 1vw;
+  left: 1vw;
+}
+
+.bottom-right {
+  position: absolute;
+  bottom: 1vw;
+  right: 1vw;
+  transform: rotate(180deg);
+}
+
+.card-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1vw;
+  margin-bottom: 2vw;
+  width: 100%;
+}
+
+.card-buttons ion-button {
+  font-size: 3vw;
+  width: 30vw;
+  height: 25vw;
+}
+
+.card-button-disabled {
+  background-color: #ff0000;
+  cursor: not-allowed;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: auto;
+  margin-bottom: 0px;
+}
+
+.action-buttons ion-button {
+  font-size: 5vw;
+  padding: 1vw;
+  margin: 1vw 0;
+  width: 100%;
+  max-width: auto;
+  height: 10vw;
+  margin-top: 12vw;
+  margin-bottom: -12vw;
+}
+
+
+.card-buttons ion-button:nth-child(13) {
+  grid-column-start: 2;
+  grid-row-start: 5;
+}
+
+/* Larger devices */
+@media (min-width: 1024px) {
+  #count, #recommendedMove, .card-value {
     font-size: 24px;
-    color: #ffffff;
-    text-decoration: underline;
-    margin: 0;
-    margin-bottom: 5px;
-    text-align: center;
+  }
+
+  p {
+    margin-bottom: 20px;
   }
 
   .card-button {
     width: 60px;
     height: 80px;
     padding: 4px;
-    background-color: rgb(255, 255, 255);
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
   }
-  
-  .card-value {
-    font-size: 40px;
-  }
-  
-  .card-suit {
-    font-size: 20px;
-  }
-  
+
   .top-left {
-    position: absolute;
     top: 4px;
     left: 4px;
   }
-  
+
   .bottom-right {
-    position: absolute;
     bottom: 4px;
     right: 4px;
-    transform: rotate(180deg);
   }
-  
-  
-  .card-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 5px;
-    margin-bottom: 20px;
-  }
-  
+
   .card-buttons ion-button {
     font-size: 35px;
-    margin: 5px;
-    padding: 5px;
     width: 120px;
     height: 100px;
   }
 
-  .card-button-disabled {
-    background-color: #ff0000;
-    cursor: not-allowed;
-  }
-  
-  .action-buttons {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: auto;
-    margin-bottom: 0px;
-  }
-  
   .action-buttons ion-button {
     font-size: 18px;
     padding: 10px;
     margin: 5px 0;
     width: 100%;
-    max-width: auto;
     height: 50px;
     margin-top: 70px;
     margin-bottom: -70px;
   }
-  
+}
