@@ -33,10 +33,10 @@ const GraphPage: React.FC<GraphPageProps> = ({ cardCount, decks, onClose }) => {
             height={window.innerHeight * 0.7}
             data={data}
             margin={{
-              top: 100,
+              top: 70,
               right: 40,
               left: 0,
-              bottom: 40,
+              bottom: 70,
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />

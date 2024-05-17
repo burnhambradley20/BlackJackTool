@@ -44,19 +44,20 @@ const Splash: React.FC = () => {
 
   // Hi-Lo card values
   const hiLo: CardValues = {
-    '2': 0.58,
-    '3': 0.68,
-    '4': 0.72,
-    '5': 0.97,
-    '6': 1.43,
-    '7': 0.35,
-    '8': 0.00,
-    '9': -0.60,
-    '10': -1.00,
-    'J': -1.00,
-    'Q': -1.00,
-    'K': -1.00,
-    'A': -0.58,
+    '2': 0.5,
+    '3': 0.5,
+    '4': 1,
+    '5': 1.5,
+    '6': 1.5,
+    '7': 0.5,
+    '8': 0,
+    '9': -0.5,
+    '10': -1,
+    'J': -1,
+    'Q': -1,
+    'K': -1,
+    'A': -0.5,
+    
   };
 
   // Update the count based on the played card
@@ -139,7 +140,7 @@ const Splash: React.FC = () => {
 
   // Undo the last card played
   const undo = () => {
-    if (previousCards.length > 0) {
+        if (previousCards.length > 0) {
       const lastCard = previousCards.pop();
       if (lastCard) {
         setCardCount({ ...cardCount, [lastCard]: cardCount[lastCard] - 1 });
